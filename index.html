@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body>
+  <div id="chart" style="width: 900px; height: 500px;"></div>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    var color = 0;
+    function getNextColor() {
+      color += 838860;  /* 0xFFFFFF / 20 */
+      return '#' + color.toString(16);
+    }
+
+    google.load("visualization", '1', { packages:['corechart'] });
+    google.setOnLoadCallback(function() {
+      var data = google.visualization.arrayToDataTable([
+        ['App', 'Test Count', { role: 'style' }],
+        ['system', 19, getNextColor()],
+        ['email', 14, getNextColor()],
+        ['browser', 8, getNextColor()],
+        ['calendar', 5, getNextColor()],
+        ['search', 5, getNextColor()],
+        ['video', 4, getNextColor()],
+        ['contacts', 4, getNextColor()],
+        ['settings', 3, getNextColor()],
+        ['gallery', 3, getNextColor()],
+        ['dialer', 2, getNextColor()],
+        ['sms', 1, getNextColor()],
+        ['bluetooth', 0, getNextColor()],
+        ['costcontrol', 0, getNextColor()],
+        ['ftu', 0, getNextColor()],
+        ['homescreen', 0, getNextColor()],
+        ['keyboard', 0, getNextColor()],
+        ['clock', 0, getNextColor()],
+        ['camera', 0, getNextColor()],
+        ['music', 0, getNextColor()],
+        ['fm', 0, getNextColor()]
+     ]);
+
+      var div = document.getElementById('chart');
+      var chart = new google.visualization.BarChart(div);
+      chart.draw(data, {
+        title: 'Number of Tests by App',
+        hAxis: { title: 'Number of Tests' },
+        vAxis: { title: 'App' }
+      });
+    });
+  </script>
+</body>
+</html>
